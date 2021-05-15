@@ -47,6 +47,11 @@ def _get_log_settings(config):
     _check_parameters(parameter=log, expected_parameters=expected_parameters, parameter_type='log')
     return log['folder_path']
 
+def _get_job_stagger(config):
+    if 'job_stagger' not in config:
+        return 0
+    return config['job_stagger']
+
 
 def _get_jobs(config):
     if 'jobs' not in config:
@@ -105,6 +110,7 @@ def get_config_info():
     log_directory = _get_log_settings(config=config)
     if not os.path.exists(log_directory):
         os.makedirs(log_directory)
+    job_stagger = _get_job_stagger(config=config)
     jobs = _get_jobs(config=config)
     max_concurrent = _get_global_max_concurrent_config(config=config)
     progress_settings = _get_progress_settings(config=config)
