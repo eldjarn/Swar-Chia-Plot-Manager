@@ -28,7 +28,7 @@ def start_manager():
     manager_log_file = open(manager_log_file_path, 'a')
     python_file_path = sys.executable
 
-    chia_location, log_directory, jobs, manager_check_interval, max_concurrent, progress_settings, \
+    chia_location, log_directory, job_stagger, jobs, manager_check_interval, max_concurrent, progress_settings, \
         notification_settings, debug_level, view_settings = get_config_info()
 
     extra_args = []
